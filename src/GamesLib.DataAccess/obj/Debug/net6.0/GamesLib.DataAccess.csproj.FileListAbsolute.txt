@@ -1,0 +1,14 @@
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\bin\Debug\net6.0\GamesLib.DataAccess.deps.json
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\bin\Debug\net6.0\GamesLib.DataAccess.runtimeconfig.json
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\bin\Debug\net6.0\GamesLib.DataAccess.dll
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\bin\Debug\net6.0\GamesLib.DataAccess.pdb
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\obj\Debug\net6.0\GamesLib.DataAccess.csproj.AssemblyReference.cache
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\obj\Debug\net6.0\GamesLib.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\obj\Debug\net6.0\GamesLib.DataAccess.AssemblyInfoInputs.cache
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\obj\Debug\net6.0\GamesLib.DataAccess.AssemblyInfo.cs
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\obj\Debug\net6.0\GamesLib.DataAccess.csproj.CoreCompileInputs.cache
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\obj\Debug\net6.0\GamesLib.DataAccess.dll
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\obj\Debug\net6.0\refint\GamesLib.DataAccess.dll
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\obj\Debug\net6.0\GamesLib.DataAccess.pdb
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\obj\Debug\net6.0\GamesLib.DataAccess.genruntimeconfig.cache
+E:\programming\training\Mbicycle.Pashkevich.GamesLib\src\GamesLib.DataAccess\obj\Debug\net6.0\ref\GamesLib.DataAccess.dll
