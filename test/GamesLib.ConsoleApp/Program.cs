@@ -9,8 +9,8 @@ using (var context = new GamesLibContext())
     
     var gameRepository = new GameRepository(context);
 
-    artistRepository.Add(game1);
-    artistRepository.Add(game2);
+    gameRepository.Add(game1);
+    gameRepository.Add(game2);
 
     foreach (var item in gameRepository.Get())
     {
