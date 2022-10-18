@@ -4,8 +4,8 @@ using GamesLib.DataAccess.Repositories;
 
 using (var context = new GamesLibContext())
 {
-    var game1 = new Game { Name = "The Last Of Us Part I" };
-    var game2 = new Game { Name = "Dishonored" };
+    var game1 = new Game { Title = "The Last Of Us Part I" };
+    var game2 = new Game { Title = "Dishonored" };
     
     var gameRepository = new GameRepository(context);
 
@@ -14,6 +14,6 @@ using (var context = new GamesLibContext())
 
     foreach (var item in gameRepository.Get())
     {
-        Console.WriteLine($"{item.Id} - {item.Name} ");
+        Console.WriteLine($"{item.Id} - {item.Title} ");
     }
 }
