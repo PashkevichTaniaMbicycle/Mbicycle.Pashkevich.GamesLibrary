@@ -2,8 +2,8 @@
 
 namespace GamesLib.DataAccess.Repositories
 {
-    public interface IGameRepository : IRepository<Game>
+    public interface IDevRepository : IRepository<Dev>
     {
-        ICollection<Game> GetBy();
+
     }
 }

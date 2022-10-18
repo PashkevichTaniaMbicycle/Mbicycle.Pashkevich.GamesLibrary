@@ -1,6 +1,8 @@
-﻿namespace GamesLib.DataAccess.Model
+﻿using GamesLib.DataAccess.Model.Base;
+
+namespace GamesLib.DataAccess.Model
 {
-    public class Game : Base.Model
+    public class Game : Entity
     {
         //public int Id { get; set; }
 
