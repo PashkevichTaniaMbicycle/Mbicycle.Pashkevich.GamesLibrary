@@ -1,5 +1,10 @@
-E:\programming\training\back-end-training\test\GamesLib.ConsoleApp\obj\Debug\net6.0\GamesLib.ConsoleApp.csproj.AssemblyReference.cache
-E:\programming\training\back-end-training\test\GamesLib.ConsoleApp\obj\Debug\net6.0\GamesLib.ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
-E:\programming\training\back-end-training\test\GamesLib.ConsoleApp\obj\Debug\net6.0\GamesLib.ConsoleApp.AssemblyInfoInputs.cache
-E:\programming\training\back-end-training\test\GamesLib.ConsoleApp\obj\Debug\net6.0\GamesLib.ConsoleApp.AssemblyInfo.cs
-E:\programming\training\back-end-training\test\GamesLib.ConsoleApp\obj\Debug\net6.0\GamesLib.ConsoleApp.csproj.CoreCompileInputs.cache
+E:/programming/training/back-end-training/test/GamesLib.ConsoleApp/obj/Debug/net6.0/GamesLib.ConsoleApp.csproj.AssemblyReference.cache
+E:/programming/training/back-end-training/test/GamesLib.ConsoleApp/obj/Debug/net6.0/GamesLib.ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+E:/programming/training/back-end-training/test/GamesLib.ConsoleApp/obj/Debug/net6.0/GamesLib.ConsoleApp.AssemblyInfoInputs.cache
+E:/programming/training/back-end-training/test/GamesLib.ConsoleApp/obj/Debug/net6.0/GamesLib.ConsoleApp.AssemblyInfo.cs
+E:/programming/training/back-end-training/test/GamesLib.ConsoleApp/obj/Debug/net6.0/GamesLib.ConsoleApp.csproj.CoreCompileInputs.cache
+/Users/taniapashkevich/Projects/back-end-training/test/GamesLib.ConsoleApp/obj/Debug/net6.0/GamesLib.ConsoleApp.csproj.AssemblyReference.cache
+/Users/taniapashkevich/Projects/back-end-training/test/GamesLib.ConsoleApp/obj/Debug/net6.0/GamesLib.ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/taniapashkevich/Projects/back-end-training/test/GamesLib.ConsoleApp/obj/Debug/net6.0/GamesLib.ConsoleApp.AssemblyInfoInputs.cache
+/Users/taniapashkevich/Projects/back-end-training/test/GamesLib.ConsoleApp/obj/Debug/net6.0/GamesLib.ConsoleApp.AssemblyInfo.cs
+/Users/taniapashkevich/Projects/back-end-training/test/GamesLib.ConsoleApp/obj/Debug/net6.0/GamesLib.ConsoleApp.csproj.CoreCompileInputs.cache

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "auAFPyDBPGrCC5yvvYdlBp9F/xWv4wwOiiyeyQnBQzyPOsF6QPV65O1S2U0NOLBnFnAovXB+9EBIwFz/Cp9azw==",
+  "dgSpecHash": "HwMqEn1pX1gyJBePa64/zg2MgG+iQqjqPpjuuCEyXye1n5XWZsmyC16TBu78Rifg6/cAlLwZt5jrNI94k7nhNw==",
   "success": true,
-  "projectFilePath": "E:\\programming\\training\\back-end-training\\GamesLib.ConsoleApp\\GamesLib.ConsoleApp.csproj",
+  "projectFilePath": "/Users/taniapashkevich/Projects/back-end-training/test/GamesLib.ConsoleApp/GamesLib.ConsoleApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

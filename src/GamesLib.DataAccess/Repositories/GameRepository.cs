@@ -1,4 +1,5 @@
-﻿using GamesLib.DataAccess.Model;
+﻿using GamesLib.DataAccess.Context;
+using GamesLib.DataAccess.Model;
 
 namespace GamesLib.DataAccess.Repositories
 {
@@ -21,8 +22,8 @@ namespace GamesLib.DataAccess.Repositories
 
         public void Delete(Game item)
         {
-            _context.Games.Remove(Item).
-                _context.SaveChanges():
+            _context.Games.Remove(item);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
