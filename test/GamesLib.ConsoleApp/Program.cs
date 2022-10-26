@@ -15,7 +15,7 @@ try
     unitOfWork.BeginTransaction();
     
     var dev = new Dev { Title = "Naughty Dog" };
-    var publisher = new Publisher { Title = "Naughty Dog" };
+    var publisher = new Publisher { Title = "Sony" };
 
 
     devRepo.Add(dev);
