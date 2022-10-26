@@ -1,15 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using GamesLib.DataAccess.Model.Base;
+﻿using GamesLib.DataAccess.Model.Base;
 
-namespace GamesLib.DataAccess.Model 
+namespace GamesLib.DataAccess.Model;
+
+public class Dev : Entity
 {
-    public class Dev : Entity
-    {
-        [MaxLength(50)]
-        public string Title { get; set; }
-        
-        [MaxLength(300)]
-        public string Description { get; set; }
-    }
-}
 
+}

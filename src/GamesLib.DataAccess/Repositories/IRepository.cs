@@ -1,20 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GamesLib.DataAccess.Model.Base;
 
-namespace GamesLib.DataAccess.Repositories
+namespace GamesLib.DataAccess.Repositories;
+
+public interface IRepository<T> where T : Entity
 {
-    public interface IRepository<T> where T : Entity
-    {
-        T Add(T item);
+    T Add(T item);
 
-        void Delete (T item);
+    void Delete (T item);
 
-        void Delete(int id);
+    void Delete(int id);
 
-        void Update(T item);
+    void Update(T item);
 
-        ICollection<T> Get();
+    ICollection<T> Get();
 
-        T Get(int id);
-    }
+    T Get(int id);
 }

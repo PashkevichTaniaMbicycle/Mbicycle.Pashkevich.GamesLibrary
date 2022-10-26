@@ -1,9 +1,8 @@
 ﻿using GamesLib.DataAccess.Model;
 
-namespace GamesLib.DataAccess.Repositories
+namespace GamesLib.DataAccess.Repositories;
+
+public interface IGameRepository : IRepository<Game>
 {
-    public interface IGameRepository : IRepository<Game>
-    {
-        ICollection<Game> GetBy();
-    }
+    ICollection<Game> GetBy();
 }

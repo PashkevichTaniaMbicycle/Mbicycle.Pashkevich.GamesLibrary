@@ -1,9 +1,8 @@
 ﻿using GamesLib.DataAccess.Model;
 
-namespace GamesLib.DataAccess.Repositories
-{
-    public interface IPublisherRepository : IRepository<Publisher>
-    {
+namespace GamesLib.DataAccess.Repositories;
 
-    }
+public interface IPublisherRepository : IRepository<Publisher>
+{
+
 }
