@@ -10,6 +10,7 @@ namespace GamesLib.DataAccess.Context
         public DbSet<Dev> Devs { get; set; }
         
         public DbSet<Publisher> Publishers { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=PC;Database=GamesLib;Trusted_Connection=True");
