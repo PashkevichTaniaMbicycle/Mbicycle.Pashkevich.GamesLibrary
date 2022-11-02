@@ -3,11 +3,11 @@ using GamesLib.DataAccess.Repositories;
 
 namespace GamesLib.BusinessLogic;
 
-public class AllGamesService : IAllGamesService
+public class GamesService : IGamesService
 {
     private readonly IGameRepository _gameRepository;
 
-    public AllGamesService(IGameRepository gameRepository)
+    public GamesService(IGameRepository gameRepository)
     {
         _gameRepository = gameRepository ?? throw new ArgumentNullException(nameof(gameRepository));
     }
