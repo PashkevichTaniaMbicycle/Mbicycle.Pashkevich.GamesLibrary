@@ -10,4 +10,8 @@
   <ItemGroup>
     <ProjectReference Include="..\GamesLib.DataAccess\GamesLib.DataAccess.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.0.0" />
+  </ItemGroup>
 </Project>

@@ -1,4 +1,6 @@
 ﻿using GamesLib.BusinessLogic.Extensions;
+using GamesLib.BusinessLogic.Oueries;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddMediatR(typeof(GetAllGamesQuery).Assembly);
 
 var app = builder.Build();
 
