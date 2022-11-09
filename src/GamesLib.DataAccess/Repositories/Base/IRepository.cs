@@ -1,6 +1,6 @@
 ﻿using GamesLib.DataAccess.Model.Base;
 
-namespace GamesLib.DataAccess.Repositories;
+namespace GamesLib.DataAccess.Repositories.Base;
 
 public interface IRepository<T> where T : Entity
 {

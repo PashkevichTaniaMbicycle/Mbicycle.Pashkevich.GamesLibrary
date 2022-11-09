@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GamesLib.DataAccess.Context;
 using GamesLib.DataAccess.Model;
+using GamesLib.DataAccess.Repositories.Base;
 
 namespace GamesLib.DataAccess.Repositories;
 
@@ -88,5 +89,40 @@ public class GameRepository : Repository<Game>, IGameRepository
         _context.Entry(game.Publisher).State = EntityState.Detached;
         
         return result.Id;
+    }
+
+    public async Task<bool> ExistById(int id)
+    {
+        var result = await _context.Games.CountAsync(x => x.Id == id);
+        return result == 1;
+    }
+
+    public async Task<int> UpdateAsync(
+        int gameId, 
+        int devId, 
+        int publisherId, 
+        DateTime releaseDate, 
+        int rating, 
+        string title,
+        string description
+        )
+    {
+        var sale = new Game
+        {
+            Id = gameId,
+            Dev = new Dev {Id = devId},
+            Publisher = new Publisher {Id = publisherId},
+            ReleaseDate = releaseDate,
+            Rating = rating,
+            Title = title,
+            Description = description,
+        };
+       
+        _context.ChangeTracker.Clear();
+        _context.Attach(sale);
+        await UpdateAsync(sale);
+        _context.ChangeTracker.Clear();
+        
+        return gameId;
     }
 }

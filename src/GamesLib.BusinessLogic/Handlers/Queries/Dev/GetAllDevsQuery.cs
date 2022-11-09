@@ -2,7 +2,7 @@ using GamesLib.BusinessLogic.Dtos;
 using GamesLib.BusinessLogic.Wrappers.Result;
 using GamesLib.DataAccess.Repositories;
 
-namespace GamesLib.BusinessLogic.Handlers.Queries
+namespace GamesLib.BusinessLogic.Handlers.Queries.Dev
 {
     public class GetAllDevsQuery : IRequestResult<IEnumerable<DevDto>>
     {
