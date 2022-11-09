@@ -1,7 +1,8 @@
-using GamesLib.BusinessLogic.Commands;
-using Microsoft.AspNetCore.Mvc;
-using GamesLib.BusinessLogic.Oueries;
 using MediatR;
+using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Mvc;
+using GamesLib.BusinessLogic.Handlers.Commands;
+using GamesLib.BusinessLogic.Handlers.Queries;
 
 namespace GamesLib.WebApi.Controllers
 {
@@ -10,7 +11,7 @@ namespace GamesLib.WebApi.Controllers
     public class GamesController : ControllerBase
     {
         private readonly IMediator _mediator;
-        
+
         public GamesController(IMediator mediator)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
@@ -23,7 +24,7 @@ namespace GamesLib.WebApi.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] AddGameCommand command)
         {
@@ -34,7 +35,7 @@ namespace GamesLib.WebApi.Controllers
                 return BadRequest(result);
             }
 
-            return Ok(result);
+            return Created(HttpContext.Request.GetDisplayUrl(), result);
         }
     }
 }

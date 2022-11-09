@@ -9,7 +9,8 @@ namespace GamesLib.BusinessLogic.Extensions
         public static void AddBusinessServices(this IServiceCollection services)
         {
             services.AddSingleton(new GamesLibContext());
-            services.AddScoped<IGamesService, GamesService>();
+            services.AddScoped<IDevRepository, DevRepository>();
+            services.AddScoped<IPublisherRepository, PublisherRepository>();
             services.AddScoped<IGameRepository, GameRepository>();
         }
     }

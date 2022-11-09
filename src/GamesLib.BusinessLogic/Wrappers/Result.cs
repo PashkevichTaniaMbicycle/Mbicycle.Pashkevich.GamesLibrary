@@ -1,15 +1,10 @@
-namespace GamesLib.BusinessLogic.Wrappers
-
+namespace GamesLib.BusinessLogic.Wrappers.Result
 {
     public static class Result
     {
         public static Result<T> Success<T>(T data, string message = default) => new(data, false, message);
 
         public static Result<T> Fail<T>(string message, T data = default) => new(data, true, message);
-
-        public static Task<Result<T>> SuccessAsync<T>(T data, string message = default) => Task.FromResult(new Result<T>(data, false, message));
-
-        public static Task<Result<T>> FailAsync<T>(string message, T data = default) => Task.FromResult(new Result<T>(data, true, message));
     }
 
     public class Result<T>

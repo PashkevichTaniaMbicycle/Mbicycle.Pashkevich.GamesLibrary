@@ -11,18 +11,18 @@ public class UnitOfWork : IUnitOfWork
         _dbContext = dbContext;
     }
 
-    public void BeginTransaction()
+    public async Task BeginTransactionAsync()
     {
-        _dbContext.Database.BeginTransaction();
+        await _dbContext.Database.BeginTransactionAsync();
     }
 
-    public void CommitTransaction()
+    public async Task CommitTransactionAsync()
     {
-        _dbContext.Database.CommitTransaction();
+        await _dbContext.Database.CommitTransactionAsync();
     }
 
-    public void RollbackTransaction()
+    public async Task RollbackTransactionAsync()
     {
-        _dbContext.Database.RollbackTransaction();
+        await _dbContext.Database.RollbackTransactionAsync();
     }
 }

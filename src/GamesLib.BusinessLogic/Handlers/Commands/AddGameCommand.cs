@@ -1,11 +1,9 @@
-using MediatR;
-using GamesLib.BusinessLogic.Wrappers;
-using GamesLib.DataAccess.Model;
+using GamesLib.BusinessLogic.Wrappers.Result;
 using GamesLib.DataAccess.Repositories;
 
-namespace GamesLib.BusinessLogic.Commands
+namespace GamesLib.BusinessLogic.Handlers.Commands
 {
-    public class AddGameCommand : IRequest<Result<int>>
+    public class AddGameCommand : IRequestResult<int>
     {
         public AddGameCommand(
             int devId,
@@ -38,7 +36,7 @@ namespace GamesLib.BusinessLogic.Commands
 
     }
 
-    public class AddGameCommandHandler : IRequestHandler<AddGameCommand, Result<int>>
+    public class AddGameCommandHandler : IRequestHandlerResult<AddGameCommand, int>
     {
         private readonly IDevRepository _devRepository;
         
@@ -56,34 +54,31 @@ namespace GamesLib.BusinessLogic.Commands
             _gameRepository = gameRepository ?? throw new ArgumentNullException(nameof(gameRepository)); ;
         }
 
-        public Task<Result<int>> Handle(AddGameCommand command, CancellationToken cancellationToken)
+        public async Task<Result<int>> Handle(AddGameCommand command, CancellationToken cancellationToken)
         {
-            var dev = _devRepository.Get(command.DevId);
-            var publisher = _publisherRepository.Get(command.PublisherId);
+            var devExists = await _devRepository.ExistById(command.DevId);
+            var publisherExists = await _publisherRepository.ExistById(command.PublisherId);
 
-            if (dev.Id != command.DevId)
+            if (!devExists)
             {
-                return Result.FailAsync<int>($"Could not find dev with Id = '{command.DevId}'");
+                return Result.Fail<int>($"Could not find dev with Id = '{command.DevId}'");
             }
             
-            if (publisher.Id != command.PublisherId)
+            if (!publisherExists)
             {
-                return Result.FailAsync<int>($"Could not find publisher with Id = '{command.PublisherId}'");
+                return Result.Fail<int>($"Could not find publisher with Id = '{command.PublisherId}'");
             }
 
-            var newGame = new Game()
-            {
-                Dev = dev,
-                Publisher = publisher,
-                Title = command.Title,
-                Description = command.Description,
-                Rating = command.Rating,
-                ReleaseDate = command.ReleaseDate,
-            };
-
-            var result = _gameRepository.Add(newGame);
-
-            return Result.SuccessAsync(result.Id);
+            var data = await _gameRepository.AddAsync(
+                command.DevId,
+                command.PublisherId,
+                command.ReleaseDate,
+                command.Rating,
+                command.Title,
+                command.Description
+            );
+            
+            return Result.Success(data);
         }
     }
 }

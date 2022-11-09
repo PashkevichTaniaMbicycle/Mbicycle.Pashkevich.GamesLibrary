@@ -12,7 +12,11 @@ public class GameDto
 
     public int Rating { get; set; }
     
+    public string DevId { get; set; }
+    
     public string DevName { get; set; }
         
+    public string PublisherId { get; set; }
+    
     public string PublisherName { get; set; }
 }

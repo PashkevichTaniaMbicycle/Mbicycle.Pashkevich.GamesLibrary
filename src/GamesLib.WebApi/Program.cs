@@ -1,5 +1,5 @@
 ﻿using GamesLib.BusinessLogic.Extensions;
-using GamesLib.BusinessLogic.Oueries;
+using GamesLib.BusinessLogic.Handlers.Queries;
 using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
