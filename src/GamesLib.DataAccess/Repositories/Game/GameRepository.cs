@@ -107,7 +107,7 @@ public class GameRepository : Repository<Game>, IGameRepository
         string description
         )
     {
-        var sale = new Game
+        var game = new Game
         {
             Id = gameId,
             Dev = new Dev {Id = devId},
@@ -119,8 +119,8 @@ public class GameRepository : Repository<Game>, IGameRepository
         };
        
         _context.ChangeTracker.Clear();
-        _context.Attach(sale);
-        await UpdateAsync(sale);
+        _context.Attach(game);
+        await UpdateAsync(game);
         _context.ChangeTracker.Clear();
         
         return gameId;

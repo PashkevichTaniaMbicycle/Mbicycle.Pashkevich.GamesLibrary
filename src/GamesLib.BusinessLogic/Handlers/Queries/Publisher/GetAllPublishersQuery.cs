@@ -10,16 +10,16 @@ namespace GamesLib.BusinessLogic.Handlers.Queries.Publisher
 
     public class GetAllPublishersQueryHandler : IRequestHandlerResult<GetAllPublishersQuery, IEnumerable<PublisherDto>>
     {
-        private readonly IPublisherRepository _productRepository;
+        private readonly IPublisherRepository _publisherRepository;
 
-        public GetAllPublishersQueryHandler(IPublisherRepository productRepository)
+        public GetAllPublishersQueryHandler(IPublisherRepository publisherRepository)
         {
-            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
+            _publisherRepository = publisherRepository ?? throw new ArgumentNullException(nameof(publisherRepository));
         }
 
         public async Task<Result<IEnumerable<PublisherDto>>> Handle(GetAllPublishersQuery request, CancellationToken cancellationToken)
         {
-            var data = (await _productRepository.GetAsync())
+            var data = (await _publisherRepository.GetAsync())
                 .Select(dev => new PublisherDto
                 {
                     Id = dev.Id,

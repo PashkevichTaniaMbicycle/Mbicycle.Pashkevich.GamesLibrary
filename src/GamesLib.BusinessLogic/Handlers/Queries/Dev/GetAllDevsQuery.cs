@@ -10,16 +10,16 @@ namespace GamesLib.BusinessLogic.Handlers.Queries.Dev
 
     public class GetAllDevsQueryHandler : IRequestHandlerResult<GetAllDevsQuery, IEnumerable<DevDto>>
     {
-        private readonly IDevRepository _productRepository;
+        private readonly IDevRepository _devRepository;
 
-        public GetAllDevsQueryHandler(IDevRepository productRepository)
+        public GetAllDevsQueryHandler(IDevRepository devRepository)
         {
-            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
+            _devRepository = devRepository ?? throw new ArgumentNullException(nameof(devRepository));
         }
 
         public async Task<Result<IEnumerable<DevDto>>> Handle(GetAllDevsQuery request, CancellationToken cancellationToken)
         {
-            var data = (await _productRepository.GetAsync())
+            var data = (await _devRepository.GetAsync())
                 .Select(dev => new DevDto
                 {
                     Id = dev.Id,

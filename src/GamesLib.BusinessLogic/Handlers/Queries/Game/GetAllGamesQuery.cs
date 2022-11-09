@@ -11,16 +11,16 @@ namespace GamesLib.BusinessLogic.Handlers.Queries.Game
 
     public class GetAllGamesQueryHandler : IRequestHandlerResult<GetAllGamesQuery, IEnumerable<GameDto>>
     {
-        private readonly IGameRepository _saleRepository;
+        private readonly IGameRepository _gameRepository;
 
-        public GetAllGamesQueryHandler(IGameRepository saleRepository)
+        public GetAllGamesQueryHandler(IGameRepository gameRepository)
         {
-            _saleRepository = saleRepository ?? throw new ArgumentNullException(nameof(saleRepository));
+            _gameRepository = gameRepository ?? throw new ArgumentNullException(nameof(gameRepository));
         }
 
         async Task<Result<IEnumerable<GameDto>>> IRequestHandler<GetAllGamesQuery, Result<IEnumerable<GameDto>>>.Handle(GetAllGamesQuery request, CancellationToken cancellationToken)
         {
-            var data = (await _saleRepository.GetAsync())
+            var data = (await _gameRepository.GetAsync())
                 .Select(game => new GameDto
                 {
                     Id = game.Id,
