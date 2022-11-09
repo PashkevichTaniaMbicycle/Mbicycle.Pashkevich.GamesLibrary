@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 namespace GamesLib.WebApi.Controllers;
 
 [ApiController]
-[Route("api/devs")]
+[Route("api/publishers")]
 public class PublisherController : ControllerBase
 {
     private readonly IMediator _mediator;
