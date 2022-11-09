@@ -13,23 +13,23 @@ var publisherRepo = new PublisherRepository(context);
 
 try
 {
-    unitOfWork.BeginTransaction();
+    await unitOfWork.BeginTransactionAsync();
     
     var dev = new Dev { Title = "Naughty Dog" };
     var publisher = new Publisher { Title = "Sony" };
 
 
-    devRepo.Add(dev);
-    publisherRepo.Add(publisher);
+    await devRepo.AddAsync(dev);
+    await publisherRepo.AddAsync(publisher);
     
     Console.WriteLine(dev.Id);
     Console.WriteLine(publisher.Id);
 
-    gameRepo.Add(new Game { Title = "The Last Of Us Part I",  Description = "something", ReleaseDate = DateTime.Now, Publisher = publisher, Dev = dev });
+    await gameRepo.AddAsync(new Game { Title = "The Last Of Us Part I",  Description = "something", ReleaseDate = DateTime.Now, Publisher = publisher, Dev = dev });
 
-    unitOfWork.CommitTransaction();
+    await unitOfWork.CommitTransactionAsync();
 }
 catch
 {
-    unitOfWork.RollbackTransaction();
+    await unitOfWork.RollbackTransactionAsync();
 }
