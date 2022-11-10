@@ -20,10 +20,11 @@ namespace GamesLib.BusinessLogic.Handlers.Queries.Publisher
         public async Task<Result<IEnumerable<PublisherDto>>> Handle(GetAllPublishersQuery request, CancellationToken cancellationToken)
         {
             var data = (await _publisherRepository.GetAsync())
-                .Select(dev => new PublisherDto
+                .Select(publisher => new PublisherDto
                 {
-                    Id = dev.Id,
-                    Title = dev.Title,
+                    Id = publisher.Id,
+                    Title = publisher.Title,
+                    Description = publisher.Description,
                 });
 
             return Result.Success(data);

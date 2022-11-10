@@ -8,13 +8,16 @@ namespace GamesLib.BusinessLogic.Handlers.Commands.Dev;
 public class UpdateDevCommand : IRequestResult<int>
 {
     public int  DevId { get; set; }
-    public string DevName { get; set; }
+    
+    public string DevTitle { get; set; }
+    
+    public string DevDescription { get; set; }
 }
 
 public class UpdateDevCommandValidator : AbstractValidator<UpdateDevCommand>
 {
     private const int MinIdValue = 0;
-    private const int DevNameMaxLength = 50;
+    private const int DevTitleMaxLength = 50;
     
     public UpdateDevCommandValidator()
     {
@@ -22,9 +25,9 @@ public class UpdateDevCommandValidator : AbstractValidator<UpdateDevCommand>
             .GreaterThan(MinIdValue)
             .WithMessage($"DevId have to be greater then '{MinIdValue}'");
         
-        RuleFor(x => x.DevName)
-            .MaximumLength(DevNameMaxLength)
-            .WithMessage(x=> $"DevName length have to be less then '{DevNameMaxLength}', actual length is '{x.DevName.Length}'");
+        RuleFor(x => x.DevTitle)
+            .MaximumLength(DevTitleMaxLength)
+            .WithMessage(x=> $"DevTitle length have to be less then '{DevTitleMaxLength}', actual length is '{x.DevTitle.Length}'");
     }
 }
 
@@ -57,7 +60,9 @@ public class UpdateDevCommandHandler : IRequestHandlerResult<UpdateDevCommand, i
 
         var data = await _devRepository.UpdateAsync(
             command.DevId, 
-            command.DevName);
+            command.DevTitle,
+            command.DevDescription
+            );
         
         return Result.Success(data);
     }

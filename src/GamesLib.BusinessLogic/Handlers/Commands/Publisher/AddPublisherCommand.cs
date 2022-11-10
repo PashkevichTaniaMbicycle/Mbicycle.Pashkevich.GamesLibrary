@@ -7,7 +7,9 @@ namespace GamesLib.BusinessLogic.Handlers.Commands.Publisher;
 
 public class AddPublisherCommand : IRequestResult<int>
 {
-    public string PublisherTitle { get; set; }
+    public string Title { get; set; }
+    
+    public string Description { get; set; }
 }
 
 public class AddPublisherCommandValidator : AbstractValidator<AddPublisherCommand>
@@ -16,9 +18,9 @@ public class AddPublisherCommandValidator : AbstractValidator<AddPublisherComman
     
     public AddPublisherCommandValidator()
     {
-        RuleFor(x => x.PublisherTitle)
+        RuleFor(x => x.Title)
             .MaximumLength(TitleMaxLength)
-            .WithMessage(x=> $"Title length have to be less then '{TitleMaxLength}', actual length is '{x.PublisherTitle.Length}'");
+            .WithMessage(x=> $"Title length have to be less then '{TitleMaxLength}', actual length is '{x.Title.Length}'");
     }
 }
 
@@ -43,13 +45,13 @@ public class AddPublisherCommandHandler : IRequestHandlerResult<AddPublisherComm
             return Result.Fail<int>(validationResult.GetErrorMessages());
         }
         
-        var exist = await _publisherRepository.ExistByTitle(command.PublisherTitle);
+        var exist = await _publisherRepository.ExistByTitle(command.Title);
         if (exist)
         {
-            return Result.Fail<int>($@"Could not add publisher with name '{command.PublisherTitle}' which is already exists");
+            return Result.Fail<int>($@"Could not add publisher with name '{command.Title}' which is already exists");
         }
 
-        var data = await _publisherRepository.AddAsync(command.PublisherTitle);
+        var data = await _publisherRepository.AddAsync(command.Title, command.Description);
         
         return Result.Success(data);
     }

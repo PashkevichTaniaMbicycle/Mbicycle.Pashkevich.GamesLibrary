@@ -24,6 +24,7 @@ namespace GamesLib.BusinessLogic.Handlers.Queries.Dev
                 {
                     Id = dev.Id,
                     Title = dev.Title,
+                    Description = dev.Description,
                 });
 
             return Result.Success(data);

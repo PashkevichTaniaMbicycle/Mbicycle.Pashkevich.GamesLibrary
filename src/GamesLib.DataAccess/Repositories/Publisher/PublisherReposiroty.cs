@@ -19,9 +19,9 @@ public class PublisherRepository : Repository<Publisher>, IPublisherRepository
         return new Publisher { Id = id };
     }
 
-    public async Task<int> AddAsync(string title)
+    public async Task<int> AddAsync(string title, string description)
     {
-        var entity = new Publisher {Title = title};
+        var entity = new Publisher {Title = title, Description = description};
         var result = await AddAsync(entity);
         return result.Id;
     }
@@ -38,9 +38,9 @@ public class PublisherRepository : Repository<Publisher>, IPublisherRepository
         return result > 0;
     }
 
-    public async Task<int> UpdateAsync(int id, string title)
+    public async Task<int> UpdateAsync(int id, string title, string description)
     {
-        var publisher = new Publisher {Id = id, Title = title};
+        var publisher = new Publisher {Id = id, Title = title, Description = description};
         _context.ChangeTracker.Clear();
         _context.Attach(publisher);
         await UpdateAsync(publisher);

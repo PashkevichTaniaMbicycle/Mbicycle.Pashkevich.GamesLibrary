@@ -7,18 +7,20 @@ namespace GamesLib.BusinessLogic.Handlers.Commands.Dev;
 
 public class AddDevCommand : IRequestResult<int>
 {
-    public string DevTitle { get; set; }
+    public string Title { get; set; }
+    
+    public string Description { get; set; }
 }
 
 public class AddDevCommandValidator : AbstractValidator<AddDevCommand>
 {
-    private const int DevTitleMaxLength = 50;
+    private const int TitleMaxLength = 50;
     
     public AddDevCommandValidator()
     {
-        RuleFor(x => x.DevTitle)
-            .MaximumLength(DevTitleMaxLength)
-            .WithMessage(x=> $"DevTitle length have to be less then '{DevTitleMaxLength}', actual length is '{x.DevTitle.Length}'");
+        RuleFor(x => x.Title)
+            .MaximumLength(TitleMaxLength)
+            .WithMessage(x=> $"Title length have to be less then '{TitleMaxLength}', actual length is '{x.Title.Length}'");
     }
 }
 
@@ -43,13 +45,13 @@ public class AddDevCommandHandler : IRequestHandlerResult<AddDevCommand, int>
             return Result.Fail<int>(validationResult.GetErrorMessages());
         }
         
-        var exist = await _devRepository.ExistByTitle(command.DevTitle);
+        var exist = await _devRepository.ExistByTitle(command.Title);
         if (exist)
         {
-            return Result.Fail<int>($@"Could not add dev with name '{command.DevTitle}' which is already exists");
+            return Result.Fail<int>($@"Could not add dev with name '{command.Title}' which is already exists");
         }
 
-        var data = await _devRepository.AddAsync(command.DevTitle);
+        var data = await _devRepository.AddAsync(command.Title, command.Description);
         
         return Result.Success(data);
     }

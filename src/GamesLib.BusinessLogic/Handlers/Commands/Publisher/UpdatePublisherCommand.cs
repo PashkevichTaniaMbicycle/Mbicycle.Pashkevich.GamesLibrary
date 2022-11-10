@@ -8,13 +8,16 @@ namespace GamesLib.BusinessLogic.Handlers.Commands.Publisher;
 public class UpdatePublisherCommand : IRequestResult<int>
 {
     public int  PublisherId { get; set; }
-    public string PublisherName { get; set; }
+    
+    public string Title { get; set; }
+    
+    public string Description { get; set; }
 }
 
 public class UpdatePublisherCommandValidator : AbstractValidator<UpdatePublisherCommand>
 {
     private const int MinIdValue = 0;
-    private const int PublisherNameMaxLength = 50;
+    private const int TitleMaxLength = 50;
     
     public UpdatePublisherCommandValidator()
     {
@@ -22,9 +25,9 @@ public class UpdatePublisherCommandValidator : AbstractValidator<UpdatePublisher
             .GreaterThan(MinIdValue)
             .WithMessage($"PublisherId have to be greater then '{MinIdValue}'");
         
-        RuleFor(x => x.PublisherName)
-            .MaximumLength(PublisherNameMaxLength)
-            .WithMessage(x=> $"PublisherName length have to be less then '{PublisherNameMaxLength}', actual length is '{x.PublisherName.Length}'");
+        RuleFor(x => x.Title)
+            .MaximumLength(TitleMaxLength)
+            .WithMessage(x=> $"Title length have to be less then '{TitleMaxLength}', actual length is '{x.Title.Length}'");
     }
 }
 
@@ -57,7 +60,8 @@ public class UpdatePublisherCommandHandler : IRequestHandlerResult<UpdatePublish
 
         var data = await _publisherRepository.UpdateAsync(
             command.PublisherId, 
-            command.PublisherName);
+            command.Title,
+            command.Description);
         
         return Result.Success(data);
     }

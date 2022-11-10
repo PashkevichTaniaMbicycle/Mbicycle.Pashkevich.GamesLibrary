@@ -19,9 +19,9 @@ public class DevRepository : Repository<Dev>, IDevRepository
         return new Dev { Id = id };
     }
 
-    public async Task<int> AddAsync(string title)
+    public async Task<int> AddAsync(string title, string description)
     {
-        var entity = new Dev {Title = title};
+        var entity = new Dev {Title = title, Description = description};
         var result = await AddAsync(entity);
         return result.Id;
     }
@@ -38,9 +38,9 @@ public class DevRepository : Repository<Dev>, IDevRepository
         return result > 0;
     }
 
-    public async Task<int> UpdateAsync(int id, string title)
+    public async Task<int> UpdateAsync(int id, string title,string description)
     {
-        var dev = new Dev {Id = id, Title = title};
+        var dev = new Dev {Id = id, Title = title, Description = description};
         _context.ChangeTracker.Clear();
         _context.Attach(dev);
         await UpdateAsync(dev);

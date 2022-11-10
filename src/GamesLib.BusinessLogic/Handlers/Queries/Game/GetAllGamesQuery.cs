@@ -28,8 +28,8 @@ namespace GamesLib.BusinessLogic.Handlers.Queries.Game
                     Description = game.Description,
                     Rating = game.Rating,
                     ReleaseDate = game.ReleaseDate,
-                    DevName = game.Dev.Title,
-                    PublisherName = game.Publisher.Title,
+                    DevTitle = game.Dev.Title,
+                    PublisherTitle = game.Publisher.Title,
                 });
 
             return Result.Success(data);
