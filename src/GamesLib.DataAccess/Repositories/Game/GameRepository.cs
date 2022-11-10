@@ -81,13 +81,13 @@ public class GameRepository : Repository<Game>, IGameRepository
             Title = title,
             Description = description,
         };
-       
+
+        _context.ChangeTracker.Clear();
         _context.Attach(game.Dev);
         _context.Attach(game.Publisher);
         var result = await AddAsync(game);
-        _context.Entry(game.Dev).State = EntityState.Detached;
-        _context.Entry(game.Publisher).State = EntityState.Detached;
-        
+        _context.ChangeTracker.Clear();
+
         return result.Id;
     }
 
