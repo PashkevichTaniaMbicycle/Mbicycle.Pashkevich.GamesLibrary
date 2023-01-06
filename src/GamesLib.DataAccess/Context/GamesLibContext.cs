@@ -13,7 +13,9 @@ namespace GamesLib.DataAccess.Context
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=PC;Database=GamesLib;Trusted_Connection=True");
+            optionsBuilder
+                .UseSqlServer(@"Server=PC;Database=GamesLib;Trusted_Connection=True")
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);;
         }
     }
 }

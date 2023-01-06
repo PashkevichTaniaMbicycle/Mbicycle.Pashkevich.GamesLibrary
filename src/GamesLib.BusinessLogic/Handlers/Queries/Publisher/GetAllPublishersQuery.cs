@@ -2,7 +2,7 @@ using GamesLib.BusinessLogic.Dtos;
 using GamesLib.BusinessLogic.Wrappers.Result;
 using GamesLib.DataAccess.Repositories;
 
-namespace GamesLib.BusinessLogic.Handlers.Queries
+namespace GamesLib.BusinessLogic.Handlers.Queries.Publisher
 {
     public class GetAllPublishersQuery : IRequestResult<IEnumerable<PublisherDto>>
     {
@@ -10,20 +10,21 @@ namespace GamesLib.BusinessLogic.Handlers.Queries
 
     public class GetAllPublishersQueryHandler : IRequestHandlerResult<GetAllPublishersQuery, IEnumerable<PublisherDto>>
     {
-        private readonly IPublisherRepository _productRepository;
+        private readonly IPublisherRepository _publisherRepository;
 
-        public GetAllPublishersQueryHandler(IPublisherRepository productRepository)
+        public GetAllPublishersQueryHandler(IPublisherRepository publisherRepository)
         {
-            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
+            _publisherRepository = publisherRepository ?? throw new ArgumentNullException(nameof(publisherRepository));
         }
 
         public async Task<Result<IEnumerable<PublisherDto>>> Handle(GetAllPublishersQuery request, CancellationToken cancellationToken)
         {
-            var data = (await _productRepository.GetAsync())
-                .Select(dev => new PublisherDto
+            var data = (await _publisherRepository.GetAsync())
+                .Select(publisher => new PublisherDto
                 {
-                    Id = dev.Id,
-                    Title = dev.Title,
+                    Id = publisher.Id,
+                    Title = publisher.Title,
+                    Description = publisher.Description,
                 });
 
             return Result.Success(data);

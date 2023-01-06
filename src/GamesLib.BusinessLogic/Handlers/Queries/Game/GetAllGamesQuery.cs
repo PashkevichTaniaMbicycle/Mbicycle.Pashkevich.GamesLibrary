@@ -3,7 +3,7 @@ using GamesLib.BusinessLogic.Dtos;
 using GamesLib.BusinessLogic.Wrappers.Result;
 using GamesLib.DataAccess.Repositories;
 
-namespace GamesLib.BusinessLogic.Handlers.Queries
+namespace GamesLib.BusinessLogic.Handlers.Queries.Game
 {
     public class GetAllGamesQuery : IRequestResult<IEnumerable<GameDto>>
     {
@@ -11,16 +11,16 @@ namespace GamesLib.BusinessLogic.Handlers.Queries
 
     public class GetAllGamesQueryHandler : IRequestHandlerResult<GetAllGamesQuery, IEnumerable<GameDto>>
     {
-        private readonly IGameRepository _saleRepository;
+        private readonly IGameRepository _gameRepository;
 
-        public GetAllGamesQueryHandler(IGameRepository saleRepository)
+        public GetAllGamesQueryHandler(IGameRepository gameRepository)
         {
-            _saleRepository = saleRepository ?? throw new ArgumentNullException(nameof(saleRepository));
+            _gameRepository = gameRepository ?? throw new ArgumentNullException(nameof(gameRepository));
         }
 
         async Task<Result<IEnumerable<GameDto>>> IRequestHandler<GetAllGamesQuery, Result<IEnumerable<GameDto>>>.Handle(GetAllGamesQuery request, CancellationToken cancellationToken)
         {
-            var data = (await _saleRepository.GetAsync())
+            var data = (await _gameRepository.GetAsync())
                 .Select(game => new GameDto
                 {
                     Id = game.Id,
@@ -28,8 +28,8 @@ namespace GamesLib.BusinessLogic.Handlers.Queries
                     Description = game.Description,
                     Rating = game.Rating,
                     ReleaseDate = game.ReleaseDate,
-                    DevName = game.Dev.Title,
-                    PublisherName = game.Publisher.Title,
+                    DevTitle = game.Dev.Title,
+                    PublisherTitle = game.Publisher.Title,
                 });
 
             return Result.Success(data);

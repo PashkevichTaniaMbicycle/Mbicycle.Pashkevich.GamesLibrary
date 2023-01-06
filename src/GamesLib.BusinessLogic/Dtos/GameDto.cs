@@ -14,9 +14,9 @@ public class GameDto
     
     public string DevId { get; set; }
     
-    public string DevName { get; set; }
+    public string DevTitle { get; set; }
         
     public string PublisherId { get; set; }
     
-    public string PublisherName { get; set; }
+    public string PublisherTitle { get; set; }
 }

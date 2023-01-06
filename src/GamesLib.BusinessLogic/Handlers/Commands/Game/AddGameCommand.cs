@@ -1,7 +1,8 @@
+using FluentValidation;
 using GamesLib.BusinessLogic.Wrappers.Result;
 using GamesLib.DataAccess.Repositories;
 
-namespace GamesLib.BusinessLogic.Handlers.Commands
+namespace GamesLib.BusinessLogic.Handlers.Commands.Game
 {
     public class AddGameCommand : IRequestResult<int>
     {
@@ -35,6 +36,37 @@ namespace GamesLib.BusinessLogic.Handlers.Commands
         public int Rating { get; set; }
 
     }
+    
+    public class AddGameCommandValidator : AbstractValidator<AddGameCommand>
+    {
+        private const int MinPositive = 0;
+        private const int MaxRating = 100;
+        private const int TitleMaxLength = 50;
+    
+        public AddGameCommandValidator()
+        {
+            RuleFor(x => x.DevId)
+                .GreaterThan(MinPositive)
+                .WithMessage($"DevId have to be greater then '{MinPositive}'");
+            
+            RuleFor(x => x.PublisherId)
+                .GreaterThan(MinPositive)
+                .WithMessage($"PublisherId have to be greater then '{MinPositive}'");
+            
+            RuleFor(x => x.Title)
+                .MaximumLength(TitleMaxLength)
+                .WithMessage(x=> $"Title length have to be less then '{TitleMaxLength}', actual length is '{x.Title.Length}'");
+            
+            RuleFor(x => x.Rating)
+                .GreaterThan(MinPositive)
+                .LessThanOrEqualTo(MaxRating)
+                .WithMessage($"Rating have to be in range 1-100");
+        
+            RuleFor(x => x.ReleaseDate)
+                .NotNull()
+                .WithMessage("Release Date have to not be empty");
+        }
+    }    
 
     public class AddGameCommandHandler : IRequestHandlerResult<AddGameCommand, int>
     {
